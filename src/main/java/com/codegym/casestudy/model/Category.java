@@ -1,11 +1,21 @@
 package com.codegym.casestudy.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.List;
 
-//@Entity
+@Entity
+@Table(name="category")
 public class Category {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long categoryId;
+
+
     private String categoryName;
+
+    @OneToMany(targetEntity = Blog.class)
+    private List<Blog> blogs;
 
     public Category() {
     }

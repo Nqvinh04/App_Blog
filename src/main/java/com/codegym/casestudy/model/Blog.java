@@ -15,7 +15,9 @@ public class Blog {
 
     private  String title;
 
-    private String category;
+    @ManyToOne
+    @JoinColumn(name = "categoryId")
+    private Category category;
 
     private String tags;
 
@@ -40,7 +42,7 @@ public class Blog {
         this.content = content;
     }
 
-    public Blog(Long id, String title, String category, String tags, String image,
+    public Blog(Long id, String title, Category category, String tags, String image,
                 String content, Date date, String author, String status) {
         this.id = id;
         this.title = title;
@@ -85,11 +87,11 @@ public class Blog {
         this.content = content;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
